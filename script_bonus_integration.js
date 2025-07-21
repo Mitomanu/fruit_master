@@ -229,7 +229,22 @@ function Spin() {
         }
     } else {
         // Comportamentul normal al funcției Spin
-        startGame();
+        // Verificăm banii disponibili
+        var check = checkMoney();
+        if(check){
+            // Resetăm mesajele de câștig în cazul unei noi rotiri
+            if(window.WinMessage && typeof window.WinMessage.clear === 'function') {
+                window.WinMessage.clear();
+            }
+            
+            audioSpin.currentTime = 0;
+            audioSpin.play();
+            
+            money = money - bet;
+            showMoney();
+            disableBtns();
+            getColumns();
+        }
     }
 }
 
@@ -265,11 +280,13 @@ function addItems(el, n, useAllSymbols = false) {
             el.appendChild(div);
         }
     } else {
-        // În jocul normal, implementăm comportamentul standard pentru addItems
+        // În jocul normal, folosim comportamentul original
+        const itemsArray = ['items/cherry.png', 'items/lemon.png', 'items/orange.png', 'items/plum.png', 'items/bell.png', 'items/strawberry.png', 'items/watermelon.png', 'items/clover.png', 'items/seven.png', 'items/star_scatter.png'];
+        
         for(let i = 0; i < n; i++) {
             const div = document.createElement('div');
             const img = document.createElement('img');
-            img.src = arr[getRandomInt(arr.length)];
+            img.src = itemsArray[Math.floor(Math.random() * itemsArray.length)];
             img.className = 'slot-img';
             img.alt = 'Symbol';
             div.appendChild(img);
