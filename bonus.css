@@ -1,0 +1,139 @@
+/**
+ * bonus.css
+ * Stilizări pentru modul de joc bonus gratuit
+ */
+
+/* Stilizare pentru rolele în timpul jocului bonus */
+.bonus-slot {
+    background: linear-gradient(135deg, #ff6b6b 0%, #c71515 50%, #a50000 100%) !important;
+    box-shadow: 
+        inset 0 0 25px -5px rgba(255,0,0,0.45),
+        inset 0 0 10px 2px rgba(255,0,0,0.3),
+        inset 0 0 5px 5px rgba(255,0,0,0.2) !important;
+}
+
+/* Stilizare pentru mesajul de bonus */
+#bonus-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background-color: rgba(255, 50, 50, 0.9);
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    padding: 20px 40px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.5s ease;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.7);
+    display: block !important;
+    white-space: nowrap;
+}
+
+#bonus-message.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    animation: 
+        bonus-pulse 2s infinite,
+        bonus-glowing 1.5s infinite;
+}
+
+/* Animație de pulsație pentru mesajul de bonus */
+@keyframes bonus-pulse {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.1); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Efect de strălucire pentru cadrul mesajului */
+@keyframes bonus-glowing {
+    0% { box-shadow: 0 0 10px rgba(255, 107, 107, 0.6); }
+    50% { box-shadow: 0 0 30px rgba(255, 107, 107, 1); }
+    100% { box-shadow: 0 0 10px rgba(255, 107, 107, 0.6); }
+}
+
+/* Stilizare pentru contorul de rotiri gratuite */
+#free-spins-counter {
+    position: fixed;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffdc5a;
+    border: 2px solid #ff6b6b;
+    border-radius: 10px;
+    padding: 5px 15px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 1500;
+    display: none;
+}
+
+/* Stilizare pentru spațiile goale în jocul bonus */
+.bonus-empty-space {
+    background: transparent;
+    width: 100%;
+    height: 100%;
+}
+
+/* Stilizare pentru simbolurile din jocul bonus */
+.bonus-cherry-symbol {
+    max-width: 98% !important;
+    max-height: 98% !important;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Stilizare pentru simbolurile normale (seven și star_scatter) în jocul bonus */
+.bonus-normal-symbol {
+    max-width: 65% !important;
+    max-height: 65% !important;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Stilizare pentru jackpot win */
+#jackpot-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: linear-gradient(135deg, #ff6b6b 0%, #c71515 50%, #a50000 100%);
+    color: #ffdc5a;
+    border: 6px solid gold;
+    border-radius: 15px;
+    padding: 30px 40px;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 2100;
+    opacity: 0;
+    transition: all 0.5s ease-out;
+    box-shadow: 0 0 50px rgba(255, 215, 0, 1);
+}
+
+#jackpot-message.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    animation: 
+        jackpot-pulse 1.5s infinite,
+        jackpot-glowing 1s infinite;
+}
+
+@keyframes jackpot-pulse {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.15); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes jackpot-glowing {
+    0% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.7); }
+    50% { box-shadow: 0 0 60px rgba(255, 215, 0, 1); }
+    100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.7); }
+}

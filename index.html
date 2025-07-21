@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRUIT MASTER</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="win_message.css">
+</head>
+<body>
+    <!-- Buton pentru fullscreen -->
+    <div id="fullscreen-button">
+        <img src="buttons/fullscreen.png" alt="Fullscreen" id="fullscreen-icon">
+    </div>
+    <!-- Buton pentru info -->
+    <div id="info-button">
+        <img src="buttons/info.svg" alt="Informații" id="info-icon">
+    </div>
+    <header>
+        <span>Bet: <i id="bet">20</i></span>
+        <span id="el-win" style="display: none;">Câștig: +<i id="win">0</i></span>
+        <span id="el-money" class="col-red">Cash: <i id="money">0</i></span>
+        <button id="btn-putmoney">Insert cash</button>
+    </header>
+    <main>
+        <section class="s-game">
+            <div class="c-game">
+                <div id="game-area">
+                    <div class="grid-container">
+                        <!-- Primul rând de role -->
+                        <div class="grid-item">
+                            <div class="mini-slot" id="slot-1">
+                                <div class="c-column">
+                                    <div class="column"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="mini-slot" id="slot-2">
+                                <div class="c-column">
+                                    <div class="column"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="mini-slot" id="slot-3">
+                                <div class="c-column">
+                                    <div class="column"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Al doilea rând de role -->
+                        <div class="grid-item">
+                            <div class="mini-slot" id="slot-4">
+                                <div class="c-column">
+                                    <div class="column"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="mini-slot" id="slot-5">
+                                <div class="c-column">
+                                    <div class="column"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="mini-slot" id="slot-6">
+                                <div class="c-column">
+                                    <div class="column"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Al treilea rând de role -->
+                        <div class="grid-item">
+                            <div class="mini-slot" id="slot-7">
+                                <div class="c-column">
+                                    <div class="column"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="mini-slot" id="slot-8">
+                                <div class="c-column">
+                                    <div class="column"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="mini-slot" id="slot-9">
+                                <div class="c-column">
+                                    <div class="column"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="s-btns">
+            <div class="c-btn">
+                <button id="btn-bet">Bet</button>
+            </div>
+            <div class="c-btn">
+                <button id="btn-spin">SPIN</button>
+            </div>
+            <div class="c-btn">
+                <table class="paytable">
+                    <tr>
+                        <td class="rainbow-text">Simbol</td>
+                        <td style="text-align: center; background-color: rgba(255, 0, 0, 0.2);">3</td>
+                        <td style="text-align: center; background-color: rgba(255, 165, 0, 0.2);">4</td>
+                        <td style="text-align: center; background-color: rgba(255, 255, 0, 0.2);">5</td>
+                        <td style="text-align: center; background-color: rgba(0, 128, 0, 0.2);">6</td>
+                        <td style="text-align: center; background-color: rgba(0, 0, 255, 0.2);">7</td>
+                        <td style="text-align: center; background-color: rgba(75, 0, 130, 0.2);">8</td>
+                        <td style="text-align: center; background-color: rgba(238, 130, 238, 0.2);">9</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><img src="items/star_scatter.png" alt="star" style="max-height:16px; max-width:16px; display:block; margin:auto;"></td>
+                        <td>x5</td>
+                        <td>x7</td>
+                        <td>x9</td>
+                        <td>x11</td>
+                        <td>x50</td>
+                        <td>x100</td>
+                        <td>x500</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><img src="items/seven.png" alt="seven" style="max-height:16px; max-width:16px; display:block; margin:auto;"></td>
+                        <td>x4</td>
+                        <td>x6</td>
+                        <td>x8</td>
+                        <td>&nbsp;&nbsp;x9</td>
+                        <td>x50</td>
+                        <td>&nbsp;&nbsp;x75</td>
+                        <td>x250</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><img src="items/clover.png" alt="clover" style="max-height:16px; max-width:16px; display:block; margin:auto;"></td>
+                        <td>x3</td>
+                        <td>x4</td>
+                        <td>x5</td>
+                        <td>&nbsp;&nbsp;x7</td>
+                        <td>x25</td>
+                        <td>&nbsp;&nbsp;x50</td>
+                        <td>x125</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><img src="items/watermelon.png" alt="watermelon" style="max-height:16px; max-width:16px; display:block; margin:auto;"></td>
+                        <td>x2</td>
+                        <td>x3</td>
+                        <td>x4</td>
+                        <td>&nbsp;&nbsp;x5</td>
+                        <td>x12</td>
+                        <td>&nbsp;&nbsp;x30</td>
+                        <td>&nbsp;&nbsp;x75</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><img src="items/strawberry.png" alt="strawberry" style="max-height:16px; max-width:16px; display:block; margin:auto;"></td>
+                        <td>x2</td>
+                        <td>x3</td>
+                        <td>x4</td>
+                        <td>&nbsp;&nbsp;x5</td>
+                        <td>x12</td>
+                        <td>&nbsp;&nbsp;x30</td>
+                        <td>&nbsp;&nbsp;x75</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><img src="items/bell.png" alt="bell" style="max-height:16px; max-width:16px; display:block; margin:auto;"></td>
+                        <td>&nbsp;&nbsp;x1.5</td>
+                        <td>x4</td>
+                        <td>x6</td>
+                        <td>&nbsp;&nbsp;x7</td>
+                        <td>x10</td>
+                        <td>&nbsp;&nbsp;x25</td>
+                        <td>&nbsp;&nbsp;x50</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><img src="items/plum.png" alt="plum" style="max-height:16px; max-width:16px; display:block; margin:auto;"></td>
+                        <td>&nbsp;&nbsp;x1.5</td>
+                        <td>x2</td>
+                        <td>x3</td>
+                        <td>&nbsp;&nbsp;x4</td>
+                        <td>&nbsp;&nbsp;x6</td>
+                        <td>&nbsp;&nbsp;x12</td>
+                        <td>&nbsp;&nbsp;x25</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><img src="items/orange.png" alt="orange" style="max-height:16px; max-width:16px; display:block; margin:auto;"></td>
+                        <td>&nbsp;&nbsp;x1</td>
+                        <td>&nbsp;&nbsp;x1.5</td>
+                        <td>x2</td>
+                        <td>&nbsp;&nbsp;x3</td>
+                        <td>&nbsp;&nbsp;x5</td>
+                        <td>&nbsp;&nbsp;x10</td>
+                        <td>&nbsp;&nbsp;x20</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><img src="items/lemon.png" alt="lemon" style="max-height:16px; max-width:16px; display:block; margin:auto;"></td>
+                        <td>&nbsp;&nbsp;x1</td>
+                        <td>&nbsp;&nbsp;x1.5</td>
+                        <td>x2</td>
+                        <td>&nbsp;&nbsp;x3</td>
+                        <td>&nbsp;&nbsp;x5</td>
+                        <td>&nbsp;&nbsp;x10</td>
+                        <td>&nbsp;&nbsp;x20</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><img src="items/cherry.png" alt="cherry" style="max-height:16px; max-width:16px; display:block; margin:auto;"></td>
+                        <td>&nbsp;&nbsp;x0.5</td>
+                        <td>&nbsp;x1</td>
+                        <td>x1.5</td>
+                        <td>&nbsp;&nbsp;x2</td>
+                        <td>&nbsp;&nbsp;x4</td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;x5</td>
+                        <td>&nbsp;&nbsp;x10</td>
+                    </tr>
+                </table>
+            </div>
+            <div style="position:fixed; bottom:10px; right:10px; font-family:'Anton', sans-serif; font-size:10px; color:black; font-weight:bold; z-index:99999;">&copy; ALSOFT 2025</div>
+        </section>
+        <div id="zona-mesaj-bottom" style="display:none"></div>
+    </main>
+    <!-- Container pentru mesajele de câștig -->
+    <div id="win-messages-container"></div>
+    
+    <!-- Scripturile pentru joc -->
+    <script src="script.js"></script>
+    <script src="win_message.js"></script>
+    <!-- Scripturile pentru jocul bonus -->
+    <script src="bonus.js"></script>
+    <script src="script_bonus_integration.js"></script>
+    <!-- Script pentru panelul de informații -->
+    <script src="info.js"></script>
+    
+    <!-- Elemente pentru jocul bonus -->
+    <div id="bonus-message" style="display: none;">BONUS GRATUIT ACTIVAT!</div>
+    <div id="free-spins-counter" style="display: none;">Rotiri gratuite: 0</div>
+    <div id="jackpot-message" style="display: none;">JACKPOT! x10000</div>
+
+    <!-- Panel de informații cu pagini multiple -->
+    <div id="info-panel" class="info-panel">
+        <div id="close-button" class="close-button">
+            <img src="buttons/close.svg" alt="Închide" id="close-icon">
+        </div>
+        
+        <div id="info-pages-container">
+            <!-- Prima pagină -->
+            <div class="info-page" id="info-page-1">
+                <h1 class="info-title">REGULI DE JOC</h1>
+                <div class="info-content">
+                    <p>Bine ai venit la Fruit Master - jocul de cazino cu fructe!</p>
+                    
+                    <h2>Reguli de bază:</h2>
+                    <ul>
+                        <li>Pentru a începe, adaugă bani în cont apăsând pe butonul "Insert cash".</li>
+                        <li>Setează miza dorită utilizând butonul "Bet".</li>
+                        <li>Apasă "SPIN" pentru a învârti rolele.</li>
+                        <li>Câștigurile se acordă pentru combinații de 3 sau mai multe simboluri identice oriunde pe role.</li>
+                        <li>Câștigurile sunt multiplicate cu valoarea mizei, vezi tabelul alăturat.</li>
+                    </ul>
+                    
+                    <h2>Jocul bonus:</h2>
+                    <ul>
+                        <li>4 sau mai multe simboluri "Star" activează jocul bonus cu rotiri gratuite</li>
+                        <li>În timpul jocului bonus, șansele de câștig sunt mai mari</li>
+                        <li>9 simboluri "Cherry" în jocul bonus acordă Jackpot-ul (x10000)</li>
+                    </ul>
+                    
+                </div>
+                
+                <div class="nav-button nav-next" id="next-button">
+                    <img src="buttons/arrow-right.svg" alt="Înainte" id="arrow-right-icon">
+                </div>
+            </div>
+            
+            <!-- A doua pagină -->
+            <div class="info-page" id="info-page-2">
+                <h1 class="info-title">REGULI DE JOC</h1>
+                <div class="info-content">
+                    <h2>Simboluri speciale:</h2>
+                    <ul>
+                        <li><strong>Cherry</strong> - Cel mai valoros simbol, 3 simboluri acordă x100 miza</li>
+                        <li><strong>7</strong> - Al doilea cel mai valoros simbol, acordă x50 miza pentru 3 simboluri</li>
+                        <li><strong>Bell</strong> - Al treilea cel mai valoros simbol, acordă x20 miza pentru 3 simboluri</li>
+                        <li><strong>Star</strong> - Simbolul scatter, 4+ simboluri activează jocul bonus</li>
+                    </ul>
+                    
+                    <h2>Sfaturi:</h2>
+                    <ul>
+                        <li>Începe cu mize mici și crește-le treptat pe măsură ce câștigi</li>
+                        <li>Stabilește-ți un buget și respectă-l</li>
+                        <li>Jocul de noroc este o activitate de divertisment, joacă responsabil</li>
+                    </ul>
+
+                    <p>Distracție plăcută și câștiguri mari!</p>
+                </div>
+                
+                <div class="nav-button nav-prev" id="prev-button">
+                    <img src="buttons/arrow-left.svg" alt="Înapoi" id="arrow-left-icon">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

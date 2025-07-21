@@ -1,0 +1,152 @@
+/**
+ * win_message.css
+ * Stilizări pentru sistemul de afișare a mesajelor de câștig
+ */
+
+/* Stil bază pentru toate containerele de mesaje de câștig */
+.win-messages-container {
+    position: fixed;
+    top: 2%;
+    right: 0;
+    margin: 0 auto;
+    width: 80%;
+    max-width: 400px;
+    z-index: 1000;
+    pointer-events: none; /* Permite click-urile să treacă prin container */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* Container pentru prima variantă de câștig */
+#win-messages-container-0 {
+    left: -15%;
+}
+
+/* Container pentru a doua variantă de câștig */
+#win-messages-container-1 {
+    left: -10%;
+}
+
+/* Container pentru a treia variantă de câștig */
+#win-messages-container-2 {
+    left: -5%;
+}
+
+/* Stilul de bază pentru mesajul individual */
+.win-message {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffdc5a;
+    border: 2px solid #ffac33;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.3s ease-out;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+/* Clasa adăugată pentru a face mesajul vizibil cu animație */
+.win-message.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Container pentru simbolul din mesajul de câștig */
+.win-symbol-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    background-color: black;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Stilizare pentru imaginile din mesaj */
+.win-symbol-img {
+    max-width: 20px;
+    max-height: 20px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.5));
+}
+
+/* Stilizare pentru textul de numărare */
+.win-count {
+    font-weight: bold;
+    color: #ffdc5a;
+}
+
+/* Stilizare pentru valoarea câștigului */
+.win-message .win-value {
+    color: #ff6b6b;
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+/* Animație de pulsație pentru a evidenția mesajul */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.win-message.visible {
+    opacity: 1;
+    transform: scale(1);
+    animation: pulse 1s infinite;
+}
+
+/* Efect de strălucire pentru cadrul mesajului */
+@keyframes glowing {
+    0% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+    100% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+}
+
+.win-message.visible {
+    opacity: 1;
+    transform: scale(1);
+    animation: 
+        pulse 2s infinite,
+        glowing 1.5s infinite;
+}
+
+/* Adaptare pentru dispozitive mobile */
+@media (max-width: 600px) {
+    #win-messages-container {
+        width: 90%;
+        top: 25%;
+    }
+    
+    .win-message {
+        font-size: 18px;
+        padding: 10px 15px;
+    }
+    
+    .win-message img {
+        height: 24px;
+    }
+    
+    .win-message .win-value {
+        font-size: 22px;
+    }
+}

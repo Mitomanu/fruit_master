@@ -1,0 +1,153 @@
+/**
+ * info.css
+ * Stiluri pentru panelul de informații din jocul Fruit Master
+ * Autor: ALSOFT 2025
+ */
+
+/* Import font Ubuntu Bold */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+
+.info-panel {
+    position: absolute;
+    top: 54%;
+    left: 35%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 860px;
+    height: 600px;
+    background-color: lightblue;
+    opacity: 0.9; /* 10% transparență */
+    z-index: 2000;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    overflow: hidden; /* Schimbat de la 'auto' la 'hidden' pentru a nu arăta barele de scroll */
+    transition: transform 0.3s ease-in-out;
+}
+
+.info-panel.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Container pentru paginile de informații */
+#info-pages-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Stiluri pentru paginile individuale */
+.info-page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: transform 0.5s ease-in-out;
+    padding-bottom: 70px; /* Spațiu pentru butoanele de navigare */
+    overflow: hidden; /* Nu permitem scrolling */
+}
+
+/* Poziționarea inițială a paginilor */
+#info-page-1 {
+    transform: translateX(0);
+}
+
+#info-page-2 {
+    transform: translateX(100%);
+}
+
+/* Clase pentru animarea tranzițiilor */
+.slide-left {
+    transform: translateX(-100%) !important;
+}
+
+.slide-right {
+    transform: translateX(0) !important;
+}
+
+.info-title {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    font-size: 36px;
+    color: blue;
+    text-align: center;
+    margin-top: 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 2100; /* Asigurăm că butonul de închidere este deasupra celorlalte elemente */
+}
+
+/* Stiluri pentru butoanele de navigare */
+.nav-button {
+    position: absolute;
+    bottom: 10px;
+    width: 57px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 2100;
+    transition: transform 0.3s ease;
+}
+
+.nav-next {
+    right: 20px;
+}
+
+.nav-prev {
+    left: 20px;
+}
+
+#arrow-right-icon, #arrow-left-icon {
+    width: 100%;
+    height: 100%;
+    filter: invert(8%) sepia(98%) saturate(7495%) hue-rotate(246deg) brightness(101%) contrast(143%); /* Culoare albastră */
+    transition: transform 0.3s ease;
+}
+
+.nav-button:hover #arrow-right-icon, 
+.nav-button:hover #arrow-left-icon {
+    transform: scale(1.1);
+}
+
+#close-icon {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+    filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%); /* Face iconul negru */
+}
+
+.close-button:hover #close-icon {
+    transform: scale(1.1);
+}
+
+.info-content {
+    margin-top: 20px;
+    color: #222;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.info-content h2 {
+    color: #003366;
+    margin-top: 20px;
+    font-size: 24px;
+}
+
+.info-content ul {
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+.info-content li {
+    margin-bottom: 8px;
+    font-size: 12px;
+    line-height: 0.8;
+}
