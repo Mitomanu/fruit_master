@@ -196,9 +196,8 @@ startGame.checkWin = async function() {
     }
 };
 
-// Modificăm funcția startGame.Spin pentru a afișa simboluri diferite în jocul bonus
-const originalSpin = startGame.Spin;
-startGame.Spin = function() {
+// Definim o funcție globală Spin care va fi folosită în locul funcției startGame.Spin
+function Spin() {
     // Verificăm dacă suntem în jocul bonus
     if (window.BonusGame && window.BonusGame.isActive) {
         // Nu trebuie să verificăm banii în jocul bonus
@@ -211,7 +210,8 @@ startGame.Spin = function() {
         audioSpin.currentTime = 0;
         audioSpin.play();
         
-        startGame.disableBtns();
+        // Dezactivăm butoanele în timpul rotirii
+        disableBtns();
         
         // Generează simboluri specifice pentru jocul bonus
         // doar: cireasa_N.png, seven.png, star_scatter.png, sau spații goale
@@ -225,17 +225,17 @@ startGame.Spin = function() {
             }
             
             // Adăugăm noile simboluri specifice jocului bonus
-            startGame.addItems(i, bonusSymbols[i]);
+            addItems(slotColumn, bonusSymbols[i]);
         }
     } else {
         // Comportamentul normal al funcției Spin
-        originalSpin.call(startGame);
+        startGame();
     }
 }
 
-// Modificare pentru funcția startGame.addItems pentru a gestiona simbolurile în jocul bonus
-const originalAddItems = startGame.addItems;
-startGame.addItems = function(el, n, useAllSymbols = false) {
+// Suprascrierea funcției addItems pentru a gestiona simbolurile în jocul bonus
+const originalAddItems = addItems;
+function addItems(el, n, useAllSymbols = false) {
     if (window.BonusGame && window.BonusGame.isActive) {
         // În jocul bonus, adăugăm simboluri specifice pentru bonus
         const slotIndex = slots.findIndex(slot => slot.querySelector('.column') === el);
@@ -265,7 +265,16 @@ startGame.addItems = function(el, n, useAllSymbols = false) {
             el.appendChild(div);
         }
     } else {
-        // În jocul normal, folosim funcția originală
-        return originalAddItems.call(this, el, n, useAllSymbols);
+        // În jocul normal, implementăm comportamentul standard pentru addItems
+        for(let i = 0; i < n; i++) {
+            const div = document.createElement('div');
+            const img = document.createElement('img');
+            img.src = arr[getRandomInt(arr.length)];
+            img.className = 'slot-img';
+            img.alt = 'Symbol';
+            div.appendChild(img);
+            el.appendChild(div);
+        }
+        return el;
     }
 };
