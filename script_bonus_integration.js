@@ -196,9 +196,9 @@ startGame.checkWin = async function() {
     }
 };
 
-// Modificăm funcția Spin pentru a afișa simboluri diferite în jocul bonus
-const originalSpin = Spin;
-Spin = function() {
+// Modificăm funcția startGame.Spin pentru a afișa simboluri diferite în jocul bonus
+const originalSpin = startGame.Spin;
+startGame.Spin = function() {
     // Verificăm dacă suntem în jocul bonus
     if (window.BonusGame && window.BonusGame.isActive) {
         // Nu trebuie să verificăm banii în jocul bonus
@@ -211,7 +211,7 @@ Spin = function() {
         audioSpin.currentTime = 0;
         audioSpin.play();
         
-        disableBtns();
+        startGame.disableBtns();
         
         // Generează simboluri specifice pentru jocul bonus
         // doar: cireasa_N.png, seven.png, star_scatter.png, sau spații goale
@@ -225,11 +225,11 @@ Spin = function() {
             }
             
             // Adăugăm noile simboluri specifice jocului bonus
-            addItems(i, bonusSymbols[i]);
+            startGame.addItems(i, bonusSymbols[i]);
         }
     } else {
         // Comportamentul normal al funcției Spin
-        originalSpin();
+        originalSpin.call(startGame);
     }
 }
 
