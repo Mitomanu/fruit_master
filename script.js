@@ -339,8 +339,19 @@ function startGame(){
         // Găsește toate simbolurile care apar de cel puțin 3 ori
         var matchingSymbols = copiesArr(slotValues, 3);
         
-        // --- Declanșare joc bonus dacă există cel puțin 4 scatter (star_scatter, index 7) ---
+        // --- Verificăm numărul de simboluri scatter (star_scatter, index 7) ---
         let scatterCount = slotValues.filter(v => v === 7).length;
+        
+        // Declanșare free spins dacă există cel puțin 2 simboluri scatter
+        if (scatterCount >= 2 && window.FreeSpins && typeof window.FreeSpins.activateFreeSpins === 'function') {
+            // Notificăm în consolă numărul de simboluri scatter găsite
+            console.log('Simboluri scatter găsite:', scatterCount);
+            
+            // Apelăm funcția pentru rotiri gratuite
+            window.FreeSpins.activateFreeSpins(slotValues);
+        }
+        
+        // Menține și codul pentru BonusGame, dacă este necesar
         if (scatterCount >= 4 && window.BonusGame && typeof window.BonusGame.activateBonus === 'function') {
             window.BonusGame.activateBonus(slotValues, slotColumns);
         }

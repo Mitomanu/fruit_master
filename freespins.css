@@ -1,0 +1,54 @@
+/* Stilizare pentru containerul de free spins */
+#free-spins-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 1000; /* Asigurăm că mesajul apare deasupra celorlalte elemente */
+}
+
+/* Stilizare pentru mesajul de free spins */
+#free-spins-message {
+    font-size: 36px;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin-top: 20px;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+    animation: pulsate 1s infinite alternate;
+}
+
+/* Animație pentru a face mesajul să pulseze ușor */
+@keyframes pulsate {
+    from {
+        transform: scale(1);
+        text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    }
+    to {
+        transform: scale(1.05);
+        text-shadow: 0 0 20px rgba(255, 0, 0, 1);
+    }
+}
+
+/* Stilizare pentru starea de bonus - rolele vor avea fundalul roșu */
+.bonus-active .mini-slot {
+    background-color: #FF0000 !important;
+}
+
+/* Asigurăm că toate rolele sunt afectate inclusiv elementele interioare */
+.bonus-active .mini-slot .c-column,
+.bonus-active .mini-slot .column {
+    background-color: #FF0000 !important;
+}
+
+/* Tranziții pentru schimbările de culoare */
+.mini-slot,
+.mini-slot .c-column,
+.mini-slot .column {
+    transition: background-color 0.3s ease;
+}
