@@ -1,13 +1,15 @@
 /* Stilizare pentru containerul de free spins */
 #free-spins-container {
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 0;
     width: 100%;
     display: flex;
     justify-content: center;
     z-index: 1000; /* Asigurăm că mesajul apare deasupra celorlalte elemente */
 }
+
+/* Efect de strălucire pentru cadrul mesajului */
 
 /* Stilizare pentru mesajul de free spins */
 #free-spins-message {
@@ -46,9 +48,99 @@
     background-color: #FF0000 !important;
 }
 
+/* Mărirea simbolurilor în timpul jocului bonus pentru a ocupa 99% din slot */
+.bonus-active .slot-img {
+    max-width: 99% !important;
+    max-height: 99% !important;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
 /* Tranziții pentru schimbările de culoare */
 .mini-slot,
 .mini-slot .c-column,
 .mini-slot .column {
     transition: background-color 0.3s ease;
+}
+
+/* Stilul pentru contorul de rotiri gratuite */
+#free-spins-counter {
+    position: absolute;
+    top: -110px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffdc5a;
+    border: 2px solid #ffac33;
+    border-radius: 10px;
+    padding: 5px 15px;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    font-size: 36px;
+    text-align: center;
+    z-index: 999;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+}
+
+/* Stilul pentru containerul de câștig bonus */
+#bonus-win-container {
+    position: absolute;
+    bottom: -110px;
+    left: 45%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffdc5a;
+    border: 2px solid #ffac33;
+    border-radius: 10px;
+    padding: 5px 15px;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    font-size: 36px;
+    text-align: center;
+    z-index: 999;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+    display: none; /* Implicit ascuns, va fi afișat doar în timpul jocului bonus */
+}
+
+/* Afișarea containerului de câștig doar când jocul bonus este activ */
+.c-game:has(.bonus-active) #bonus-win-container,
+.bonus-active ~ #bonus-win-container,
+.c-game.bonus-mode #bonus-win-container {
+    display: block;
+}
+
+/* Adăugăm o clasă separată pentru c-game pentru a activa în alt mod containerul */
+.bonus-mode {
+    position: relative;
+}
+
+/* Stilul pentru butonul COLLECT */
+#btn-collect {
+    position: absolute;
+    bottom: -120px;
+    left: 75%;
+    transform: translateX(-50%);
+    font-size: 16px; 
+    color: #ffffff; 
+    background-color: #ff0000; 
+    border: 4px outset rgb(209, 101, 101); 
+    border-radius: 50%; 
+    cursor: pointer;
+    width: 85px;
+    height: 85px;
+    font-weight: bold;
+    display: none; /* Implicit ascuns */
+    z-index: 999;
+}
+
+#btn-collect:active {
+    border: 4px inset red;
+}
+
+/* Afișarea butonului COLLECT doar când jocul bonus este activ */
+.c-game:has(.bonus-active) #btn-collect,
+.bonus-active ~ #btn-collect,
+.c-game.bonus-mode #btn-collect {
+    display: block;
 }
